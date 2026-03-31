@@ -1,12 +1,13 @@
-import model.Producto;
-import model.Cliente;
+import model.*;
 
 public class Main {
     public static void main(String[] args) {
-        Producto producto = new Producto("P001", "Producto Demo", 100.0, 50);
-        Cliente cliente = new Cliente("Juan", "juan@mail.com");
 
-        System.out.println(producto.getDescripcion());
-        System.out.println(cliente.getNombre());
+        Producto producto = new Producto("P001", "Producto Demo", 100.0, 50);
+
+        Orden orden = new Orden(null);
+        orden.agregarItem(new ItemOrden(producto, 2));
+
+        System.out.println("Total: " + orden.calcularTotal());
     }
 }
