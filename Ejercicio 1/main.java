@@ -1,13 +1,16 @@
 import model.*;
+import pago.*;
 
 public class Main {
     public static void main(String[] args) {
 
         Producto producto = new Producto("P001", "Producto Demo", 100.0, 50);
 
-        Orden orden = new Orden(null);
+        MetodoPago pago = new PagoTarjetaCredito("1234");
+
+        Orden orden = new Orden(pago);
         orden.agregarItem(new ItemOrden(producto, 2));
 
-        System.out.println("Total: " + orden.calcularTotal());
+        orden.confirmar();
     }
-}
+} 
