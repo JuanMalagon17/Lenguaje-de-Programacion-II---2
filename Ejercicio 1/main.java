@@ -1,3 +1,4 @@
+import envio.*;
 import inventario.InventarioService;
 import model.*;
 import pago.*;
@@ -20,9 +21,9 @@ public class Main {
         OrdenService ordenService = new OrdenService(inventario);
         ordenService.procesarOrden(orden);
 
-        QuejaService quejaService = new QuejaService();
-        Queja queja = new Queja(cliente, "Demora en entrega");
-
-        quejaService.enviarQueja(queja);
+        // Simulación envío
+        EmpresaEnvio empresa = () -> System.out.println("Enviando pedido...");
+        Envio envio = new Envio(empresa);
+        envio.gestionarEnvio();
     }
 }
