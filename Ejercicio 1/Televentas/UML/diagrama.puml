@@ -1,0 +1,98 @@
+@startuml
+title UML - Sistema TeleVentas
+
+package model {
+    class Producto {
+        -codigo: String
+        -descripcion: String
+        -precio: double
+        -cantidadDisponible: int
+        +reducirStock(cantidad: int)
+    }
+
+    class Cliente {
+        -nombre: String
+        -email: String
+    }
+
+    class ItemOrden {
+        -producto: Producto
+        -cantidad: int
+        +calcularSubtotal(): double
+    }
+
+    class Orden {
+        -items: List<ItemOrden>
+        -metodoPago: MetodoPago
+        -confirmada: boolean
+        +agregarItem(item: ItemOrden)
+        +calcularTotal(): double
+        +confirmar()
+    }
+
+    class Queja {
+        -cliente: Cliente
+        -mensaje: String
+    }
+}
+
+package pago {
+    interface MetodoPago {
+        +procesarPago(monto: double)
+    }
+
+    class PagoTarjetaCredito {
+        -numeroTarjeta: String
+        +procesarPago(monto: double)
+    }
+}
+
+package envio {
+    interface EmpresaEnvio {
+        +enviarPedido()
+    }
+
+    class Envio {
+        -empresa: EmpresaEnvio
+        +gestionarEnvio()
+    }
+}
+
+package inventario {
+    class InventarioService {
+        +obtenerProducto(codigo: String): Producto
+        +actualizarStock(producto: Producto, cantidad: int)
+    }
+}
+
+package service {
+    class CatalogoService {
+        -inventario: InventarioService
+        +consultarProducto(codigo: String): Producto
+    }
+
+    class OrdenService {
+        -inventario: InventarioService
+        +procesarOrden(orden: Orden)
+    }
+
+    class QuejaService {
+        +enviarQueja(queja: Queja)
+    }
+}
+
+ItemOrden --> Producto
+Orden --> ItemOrden
+Orden --> MetodoPago
+Queja --> Cliente
+
+PagoTarjetaCredito ..|> MetodoPago
+
+CatalogoService --> InventarioService
+OrdenService --> InventarioService
+OrdenService --> Orden
+QuejaService --> Queja
+
+Envio --> EmpresaEnvio
+
+@enduml
