@@ -7,13 +7,18 @@ public class Main {
 
         Museo museo = new Museo();
         CatalogoService catalogo = new CatalogoService(museo);
+        RestauracionService restauracionService = new RestauracionService();
 
-        Cuadro c = new Cuadro("Picasso", "Moderno", 2000,
+        Cuadro cuadro = new Cuadro("Picasso", "Moderno", 5000,
                 LocalDate.now(), LocalDate.now(),
                 "Cubismo", "Óleo");
 
-        museo.agregarObra(c);
+        museo.agregarObra(cuadro);
 
+        Restauracion r = restauracionService.iniciarRestauracion("Limpieza");
+        r.finalizar(LocalDate.now());
+
+        System.out.println("Valor total: " + museo.calcularValorTotal());
         System.out.println("Obras en catálogo: " + catalogo.listarObras().size());
     }
 }
