@@ -13,4 +13,13 @@ public class Cuadro extends Obra {
         this.estilo = estilo;
         this.tecnica = tecnica;
     }
+
+    public String getEstilo() {
+        return estilo;
+    }
+
+    public String getTecnica() {
+        return tecnica;
+    }   
+    
 }

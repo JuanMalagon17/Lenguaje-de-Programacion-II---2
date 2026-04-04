@@ -15,4 +15,16 @@ public class Restauracion {
     public void finalizar(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
+    public String getTipo() {
+        return tipo;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public LocalDate getFechaFin() {
+        return fechaFin;
+    }   
+    
 }

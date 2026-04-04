@@ -13,4 +13,13 @@ public class Escultura extends Obra {
         this.estilo = estilo;
         this.material = material;
     }
+
+    public String getEstilo() {
+        return estilo;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+    
 }

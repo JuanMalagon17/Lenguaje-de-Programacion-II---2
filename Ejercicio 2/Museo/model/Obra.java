@@ -21,4 +21,9 @@ public abstract class Obra {
     public double getValor() {
         return valor;
     }
+
+    public String getAutor() {  
+        return autor;
+    }
+
 }
