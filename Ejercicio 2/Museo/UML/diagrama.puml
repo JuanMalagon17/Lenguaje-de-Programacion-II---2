@@ -1,0 +1,97 @@
+@startuml
+title Sistema Museo - UML Completo
+
+skinparam classAttributeIconSize 0
+
+package model {
+
+abstract class Obra {
+    #autor: String
+    #periodo: String
+    #valor: double
+    #fechaCreacion: LocalDate
+    #fechaIngreso: LocalDate
+    +getValor(): double
+}
+
+class Cuadro {
+    -estilo: String
+    -tecnica: String
+}
+
+class Escultura {
+    -estilo: String
+    -material: String
+}
+
+class OtroObjeto
+
+class Restauracion {
+    -tipo: String
+    -fechaInicio: LocalDate
+    -fechaFin: LocalDate
+    +finalizar(fechaFin: LocalDate)
+}
+
+class Museo {
+    -obras: List<Obra>
+    +agregarObra(obra: Obra)
+    +calcularValorTotal(): double
+    +getObras(): List<Obra>
+}
+
+class Usuario {
+    -username: String
+    -password: String
+    +login(user: String, pass: String): boolean
+}
+
+}
+
+package interfaces {
+
+interface Autenticable {
+    +login(user: String, pass: String): boolean
+}
+
+}
+
+package service {
+
+class CatalogoService {
+    -museo: Museo
+    +listarObras(): List<Obra>
+}
+
+class RestauracionService {
+    +iniciarRestauracion(tipo: String): Restauracion
+}
+
+class MuseoService {
+    +calcularValorTotal(museo: Museo): double
+}
+
+class AutenticacionService {
+    +autenticar(usuario: Usuario, user: String, pass: String): boolean
+}
+
+}
+
+' ================= RELACIONES =================
+
+' Herencia
+Cuadro --|> Obra
+Escultura --|> Obra
+OtroObjeto --|> Obra
+
+' Interfaces
+Usuario ..|> Autenticable
+
+' Asociación
+Museo "1" o-- "*" Obra
+CatalogoService --> Museo
+RestauracionService --> Restauracion
+MuseoService --> Museo
+AutenticacionService --> Usuario
+
+@enduml
