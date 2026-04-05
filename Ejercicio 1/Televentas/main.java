@@ -2,6 +2,7 @@ import envio.*;
 import inventario.InventarioService;
 import model.*;
 import pago.*;
+import service.CatalogoService;
 import service.*;
 
 public class Main {

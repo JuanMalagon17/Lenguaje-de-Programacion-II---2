@@ -13,4 +13,5 @@ public class CatalogoService {
     public Producto consultarProducto(String codigo) {
         return inventario.obtenerProducto(codigo);
     }
+    
 }
