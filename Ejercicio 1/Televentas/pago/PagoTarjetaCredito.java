@@ -1,6 +1,7 @@
 package pago;
 
 public class PagoTarjetaCredito implements MetodoPago {
+
     private String numeroTarjeta;
 
     public PagoTarjetaCredito(String numeroTarjeta) {
@@ -9,6 +10,6 @@ public class PagoTarjetaCredito implements MetodoPago {
 
     @Override
     public void procesarPago(double monto) {
-        System.out.println("Pago realizado con tarjeta por: " + monto);
+        System.out.println("Pago realizado con tarjeta" + this.numeroTarjeta + " por: " + monto);
     }
 }
