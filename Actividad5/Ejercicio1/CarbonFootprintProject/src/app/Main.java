@@ -6,6 +6,12 @@ public class Main {
     public static void main(String[] args) {
 
         Building b = new Building(100);
-        System.out.println("Huella edificio: " + b.getCarbonFootprint());
+        Car c = new Car(50);
+        Bicycle bike = new Bicycle(20);
+
+        System.out.println(b.getCarbonFootprint());
+        System.out.println(c.getCarbonFootprint());
+        System.out.println(bike.getCarbonFootprint());
+        
     }
 }
