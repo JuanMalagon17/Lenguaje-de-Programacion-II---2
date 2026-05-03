@@ -1,17 +1,25 @@
 package app;
 
 import model.*;
+import service.FileManager;
+import java.util.ArrayList;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        Building b = new Building(100);
-        Car c = new Car(50);
-        Bicycle bike = new Bicycle(20);
+        ArrayList<CarbonFootprint> list = new ArrayList<>();
 
-        System.out.println(b.getCarbonFootprint());
-        System.out.println(c.getCarbonFootprint());
-        System.out.println(bike.getCarbonFootprint());
-        
+        list.add(new Building(100));
+        list.add(new Car(50));
+        list.add(new Bicycle(20));
+
+        for (CarbonFootprint obj : list) {
+            String result = obj.toString() +
+                    " | Footprint: " + obj.getCarbonFootprint();
+
+            System.out.println(result);
+            FileManager.saveToFile(result);
+        }
     }
 }
