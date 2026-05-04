@@ -12,4 +12,12 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
+    public static void clearFile() {
+        try (FileWriter writer = new FileWriter("data/output.txt")) {
+            writer.write(""); // deja el archivo vacío
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

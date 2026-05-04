@@ -2,21 +2,38 @@ package app;
 
 import model.*;
 import service.FileManager;
+
 import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        clearFile();
+
+        ArrayList<CarbonFootprint> objects = createObjects();
+        processObjects(objects);
+    }
+
+    public static ArrayList<CarbonFootprint> createObjects() {
+
         ArrayList<CarbonFootprint> list = new ArrayList<>();
 
-        list.add(new Building(100));
-        list.add(new Car(50));
-        list.add(new Bicycle(20));
+        list.add(new Building(120));
+        list.add(new Building(80));
+        list.add(new Car(40));
+        list.add(new Car(60));
+        list.add(new Bicycle(10));
+        list.add(new Bicycle(25));
 
-        System.out.println("=== CARBON FOOTPRINT REPORT ===");
+        return list;
+    }
+
+    public static void processObjects(ArrayList<CarbonFootprint> list) {
 
         double total = 0;
+
+        System.out.println("=== CARBON FOOTPRINT REPORT ===");
 
         for (CarbonFootprint obj : list) {
 
@@ -32,5 +49,9 @@ public class Main {
 
         System.out.println("\nTOTAL FOOTPRINT: " + total);
         FileManager.saveToFile("TOTAL: " + total);
+    }
+
+    public static void clearFile() {
+        FileManager.clearFile();
     }
 }
