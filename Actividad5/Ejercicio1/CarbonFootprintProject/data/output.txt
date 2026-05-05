@@ -1,0 +1,9 @@
+=== CARBON FOOTPRINT REPORT ===
+Building | Electricity: 120.0 | Footprint: 60.00
+Building | Electricity: 80.0 | Footprint: 40.00
+Car | Fuel: 40.0 | Footprint: 92.00
+Car | Fuel: 60.0 | Footprint: 138.00
+Bicycle | Distance: 10.0 | Footprint: 0.10
+Bicycle | Distance: 25.0 | Footprint: 0.25
+
+TOTAL FOOTPRINT: 330.35

@@ -34,21 +34,27 @@ public class Main {
         double total = 0;
 
         System.out.println("=== CARBON FOOTPRINT REPORT ===");
+        FileManager.saveToFile("=== CARBON FOOTPRINT REPORT ===");
 
         for (CarbonFootprint obj : list) {
 
             double footprint = obj.getCarbonFootprint();
             total += footprint;
 
-            String result = obj.toString() +
-                    " | Footprint: " + footprint;
+            String result = String.format("%s | Footprint: %.2f",
+                    obj.toString(), footprint);
 
             System.out.println(result);
             FileManager.saveToFile(result);
         }
 
-        System.out.println("\nTOTAL FOOTPRINT: " + total);
-        FileManager.saveToFile("TOTAL: " + total);
+        String totalResult = String.format("TOTAL FOOTPRINT: %.2f", total);
+
+        System.out.println("\n" + totalResult);
+
+        // línea vacía para separar visualmente en el archivo (detalle pro)
+        FileManager.saveToFile("");
+        FileManager.saveToFile(totalResult);
     }
 
     public static void clearFile() {
