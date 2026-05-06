@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from model import CarbonFootprint
+from model.CarbonFootprint import CarbonFootprint
 
 class Bicycle(CarbonFootprint):
     def __init__(self, distance: float):
