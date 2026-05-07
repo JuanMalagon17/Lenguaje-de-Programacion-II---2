@@ -10,6 +10,11 @@ public class Building implements CarbonFootprint {
 
     @Override
     public double getCarbonFootprint() {
+
+        if (electricityUsage < 0) {
+            return 0;
+        }
+
         return electricityUsage * 0.5; // factor estimado
     }
 

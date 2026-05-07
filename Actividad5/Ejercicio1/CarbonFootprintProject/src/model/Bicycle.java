@@ -10,6 +10,11 @@ public class Bicycle implements CarbonFootprint {
 
     @Override
     public double getCarbonFootprint() {
+
+        if (distance < 0) {
+            return 0;
+        }
+
         return distance * 0.01;
     }
 

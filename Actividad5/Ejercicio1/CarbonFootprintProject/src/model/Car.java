@@ -10,6 +10,11 @@ public class Car implements CarbonFootprint {
 
     @Override
     public double getCarbonFootprint() {
+
+        if (fuelConsumption < 0) {
+            return 0;
+        }
+
         return fuelConsumption * 2.3;
     }
 
